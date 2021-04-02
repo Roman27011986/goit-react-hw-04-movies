@@ -1,14 +1,21 @@
-import axios from 'axios';
-axios.defaults.baseURL = 'https://api.themoviedb.org/3/movie';
-axios
-  .get('/popular?api_key=0900e674aa431a5cac8b8b166be20d60')
-  .then(res => console.log(res));
-function App() {
-  return (
-    <div className="App">
-      <p>qweqe</p>
-    </div>
-  );
-}
+import { Route, Link } from 'react-router-dom';
+
+import HomePage from './pages/HomePage';
+import MoviesPage from './pages/MoviesPage';
+
+const App = () => (
+  <>
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/movies">Movies</Link>
+      </li>
+    </ul>
+    <Route exact path="/" component={HomePage} />
+    <Route path="/movies" component={MoviesPage} />
+  </>
+);
 
 export default App;
