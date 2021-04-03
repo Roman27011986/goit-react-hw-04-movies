@@ -1,7 +1,9 @@
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
 import MoviesPage from './pages/MoviesPage';
+import MovieDetailsPage from './pages/MovieDetailsPage';
+import NotFound from './pages/NotFoundPage';
 
 const App = () => (
   <>
@@ -13,8 +15,13 @@ const App = () => (
         <Link to="/movies">Movies</Link>
       </li>
     </ul>
-    <Route exact path="/" component={HomePage} />
-    <Route path="/movies" component={MoviesPage} />
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/movies/:movieId" component={MovieDetailsPage} />
+      <Route path="/movies" component={MoviesPage} />
+
+      <Route component={NotFound} />
+    </Switch>
   </>
 );
 
