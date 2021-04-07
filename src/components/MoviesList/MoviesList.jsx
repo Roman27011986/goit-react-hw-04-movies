@@ -1,14 +1,22 @@
-import MoviesListItem from './MovieListItem'
-const MoviesList = ({ onMovies,url }) => (
-    <ul>
-        {onMovies.map(movie => (
-            < MoviesListItem
-                key={movie.id}
-                onTitle={movie.original_title}
-                id={movie.id}
-                url={url}
-            />
-        ))}
-    </ul>
-)
-export default MoviesList
+import {   withRouter } from 'react-router-dom';
+import MoviesListItem from '../MoviesListItem/MovieListItem'
+import styles from './MoviesList.module.css'
+
+const MoviesList = ({ onMovies }) => {
+    
+    return (
+        <ul className={styles.list}>
+        
+            {onMovies.map(({ id, original_title }) => (
+                < MoviesListItem
+                    key={id}
+                    onTitle={original_title}
+                    id={id}
+                    
+                    
+                />
+            ))}
+        </ul>
+    )
+}
+export default withRouter(MoviesList) 

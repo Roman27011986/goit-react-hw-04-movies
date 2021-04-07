@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-
+import styles from './SearchBar.module.css'
 class Searchbar extends Component {
     state = {
-    
-        query: ''
-        
+      query: ''
     }
     
     handleChange = event => {
@@ -18,10 +16,14 @@ class Searchbar extends Component {
 
     render() {
         return (
-            <form onSubmit={this.hendleSubmit}>
+            <form className={styles.form} onSubmit={this.hendleSubmit}>
                 <input type="text"
                     onChange={this.handleChange}
                     value={this.state.query}
+                    className={styles.input}
+                    placeholder="Search movies"
+                    autoComplete="off"
+                        autoFocus
                 />
                 <button type='submit' >Search</button>
             </form>
