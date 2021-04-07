@@ -4,7 +4,7 @@ const apiKey = '0900e674aa431a5cac8b8b166be20d60';
 
 export const getTrendsMovies = async () => {
   const trendMovies = await axios.get(
-    `/movie/popular/?api_key=${apiKey}&page=1`,
+    `trending/all/day?api_key=${apiKey}&page=1`,
   );
   return trendMovies;
 };
