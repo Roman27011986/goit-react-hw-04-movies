@@ -12,9 +12,13 @@ class HomePage extends Component {
         movies:[]
     }
 
-  async componentDidMount() {
-       const {data} = await getTrendsMovies()
-       this.setState({ movies: data.results })
+    async componentDidMount() {
+    try {
+      const {data} = await getTrendsMovies()
+      this.setState({ movies: data.results })
+    } catch (err) {
+        alert(err);
+      }
     }
 
     render() {

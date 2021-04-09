@@ -50,7 +50,7 @@ class MoviesPage extends Component {
             this.setState({
                 serchMovies: data.results
             })
-        )
+        ).catch(err =>  alert(err) )
     }
 
     render() {

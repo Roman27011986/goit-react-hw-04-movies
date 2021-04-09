@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getReviewsToMovie } from '../../services/apiMovies'
-import ReviewsList from '../../components/ReviewsList'
+import ReviewsList from '../ReviewsList'
 
 class Reviews extends Component {
 
@@ -9,12 +9,15 @@ class Reviews extends Component {
    }
 
     async componentDidMount() {
-        const {movieId} = this.props.match.params
+        const { movieId } = this.props.match.params
+        try { 
         const response = await getReviewsToMovie(movieId)
-        
         this.setState({
             reviews: response.results,
         })
+    } catch (err) {
+        alert(err);
+      }
        
         
    }

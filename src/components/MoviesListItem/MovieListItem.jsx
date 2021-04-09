@@ -4,9 +4,10 @@ import styles from './MovieListItem.module.css'
 class MovieListItem extends Component {
 
     
-    
 
-render() {
+    render() {
+    
+        
       return (
             <li>
               <Link
@@ -22,5 +23,8 @@ render() {
         )
     }
 }
-
+MovieListItem.defaultProps = {
+    onTitle: '???',
+    
+  };
 export default withRouter(MovieListItem) 

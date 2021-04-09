@@ -1,12 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component,lazy, Suspense } from 'react';
 import { Route,  Switch} from 'react-router-dom';
-import Cast from '../Cast/Cast'
-import Reviews from '../Reviews/Reviews'
 import {getMovieDitails} from '../../services/apiMovies'
 import MovieDitails from '../../components/MovieDitails'
 import routes from '../../routes'
 import NavigatonMovDit from '../../components/Navigation/NavigatonMovDit'
 
+
+const Cast = lazy(() =>
+  import('../../components/Cast/Cast.jsx' /* webpackChunkName: "Cast" */),
+);
+const Reviews = lazy(() =>
+  import('../../components/Reviews/Reviews.jsx' /* webpackChunkName: "Reviews" */),
+);
 
 
 class MovieDetailsPage extends Component  {
@@ -17,13 +22,14 @@ class MovieDetailsPage extends Component  {
 
     async componentDidMount() {
         const { movieId } = this.props.match.params
-        
+        try{
          const {data} = await getMovieDitails(movieId)
-         
-        this.setState({
+         this.setState({
             movie:data
-            
-            })
+         })
+        } catch (err) {
+            alert(err);
+          }
     }
 
     componentWillUnmount() {
@@ -52,15 +58,14 @@ class MovieDetailsPage extends Component  {
                 
 
                 <MovieDitails {...movie} onHandleGoBack={this.handleGoBack} />
-                 
                 <NavigatonMovDit />
-                
+                <Suspense fallback={<h1>Loading...</h1>}>
                 <Switch>
-                    
                     <Route  path={`${this.props.match.path}/cast`} component={Cast}/>
                     <Route path={`${this.props.match.path}/reviews`} component={Reviews} />
                     
-                </Switch>
+                    </Switch>
+                </Suspense>
                 </>
         )
     }
