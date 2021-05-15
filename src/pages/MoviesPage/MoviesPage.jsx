@@ -8,9 +8,9 @@ class MoviesPage extends Component {
     state = {
     
         serchMovies: [],
-        query:''
+        query: ''
         
-    }
+    };
  
     
     componentDidMount() {
@@ -22,50 +22,50 @@ class MoviesPage extends Component {
             this.setState({ query: '' })
         
         
-    }
+    };
 
     componentDidUpdate(prevProps, prevState) {
         
         if (prevState.query !== this.state.query) {
             this.fetchMovies()
           }
-       }
+    };
    
     
     onSubmitQuery = (value) => {
         
-         this.setState({query:value})
+        this.setState({ query: value })
         this.props.history.push({
             pathname: this.props.location.pathname,
             search: `query=${value}`,
         });
         
 
-    }
+    };
     
     fetchMovies = () => {
-         const { query } = this.state;
+        const { query } = this.state;
         getMoviesByName(query)
-        .then(({ data }) =>
-            this.setState({
-                serchMovies: data.results
-            })
-        ).catch(err =>  alert(err) )
-    }
+            .then(({ data }) =>
+                this.setState({
+                    serchMovies: data.results
+                })
+            ).catch(err => alert(err))
+    };
 
     render() {
         return (
             <>
-            <h1>MoviesPage</h1>
+                <h1>MoviesPage</h1>
                 <Searchbar onSubmit={this.onSubmitQuery} />
-                <MoviesList onMovies={this.state.serchMovies}  />
+                <MoviesList onMovies={this.state.serchMovies} />
                 
             </>
-        )
-    }
-}
+        );
+    };
+};
 
-export default MoviesPage
+export default MoviesPage;
 
 
 

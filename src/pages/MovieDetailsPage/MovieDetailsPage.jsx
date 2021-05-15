@@ -17,59 +17,54 @@ const Reviews = lazy(() =>
 class MovieDetailsPage extends Component  {
 
     state = {
-        movie:[]
-    }
+        movie: []
+    };
 
     async componentDidMount() {
         const { movieId } = this.props.match.params
         try{
-         const {data} = await getMovieDitails(movieId)
+            const { data } = await getMovieDitails(movieId)
+            console.log(data);
          this.setState({
             movie:data
          })
         } catch (err) {
             alert(err);
-          }
-    }
+        };
+    };
 
     componentWillUnmount() {
         this.setState({
-            movie:[]
+            movie: []
             
-            })
-    }
+        });
+    };
     
     handleGoBack = () => {
         const { location } = this.props
         const { history } = this.props
        
         history.push(location?.state?.from || routes.home)
-    }
+    };
 
     
     render() {
-         
-        
-        const {movie} = this.state
-        
+        const { movie } = this.state;
         
         return (
             <>
-                
-
                 <MovieDitails {...movie} onHandleGoBack={this.handleGoBack} />
                 <NavigatonMovDit />
                 <Suspense fallback={<h1>Loading...</h1>}>
-                <Switch>
-                    <Route  path={`${this.props.match.path}/cast`} component={Cast}/>
-                    <Route path={`${this.props.match.path}/reviews`} component={Reviews} />
-                    
+                    <Switch>
+                        <Route path={`${this.props.match.path}/cast`} component={Cast} />
+                        <Route path={`${this.props.match.path}/reviews`} component={Reviews} />
                     </Switch>
                 </Suspense>
-                </>
-        )
-    }
-}
+            </>
+        );
+    };
+};
 
 
 

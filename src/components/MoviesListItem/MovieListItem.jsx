@@ -3,28 +3,22 @@ import React, { Component } from 'react';
 import styles from './MovieListItem.module.css'
 class MovieListItem extends Component {
 
-    
-
     render() {
     
-        
       return (
-            <li>
-              <Link
+        <li>
+          <Link
                   
-                to={{
-                    pathname: `/movies/${this.props.id}`,
-                    state: { from: this.props.location },
+            to={{
+              pathname: `/movies/${this.props.id}`,
+              state: { from: this.props.location },
                     
-                }} className={styles.link}>
-                {this.props.onTitle}
-            </Link>
-            </li>
-        )
-    }
-}
-MovieListItem.defaultProps = {
-    onTitle: '???',
-    
+            }} className={styles.link}>
+            {this.props.onTitle}
+          </Link>
+        </li>
+      );
   };
+};
+
 export default withRouter(MovieListItem) 
