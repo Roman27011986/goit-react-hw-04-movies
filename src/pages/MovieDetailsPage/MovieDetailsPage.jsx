@@ -15,7 +15,6 @@ const Reviews = lazy(() =>
 
 
 class MovieDetailsPage extends Component  {
-
     state = {
         movie: []
     };
