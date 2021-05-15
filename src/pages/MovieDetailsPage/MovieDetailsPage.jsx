@@ -18,7 +18,6 @@ class MovieDetailsPage extends Component  {
     state = {
         movie: []
     };
-
     async componentDidMount() {
         const { movieId } = this.props.match.params
         try{
