@@ -1,24 +1,25 @@
 import { Link, withRouter } from 'react-router-dom';
 import React, { Component } from 'react';
-import styles from './MovieListItem.module.css'
+import styles from './MovieListItem.module.css';
 class MovieListItem extends Component {
 
     render() {
     
       return (
-        <li>
+        <li className={styles.item}>
           <Link
-                  
             to={{
               pathname: `/movies/${this.props.id}`,
               state: { from: this.props.location },
-                    
-            }} className={styles.link}>
-            {this.props.onTitle}
+            }} >
+            
+            <img className={styles.img} src={`https://image.tmdb.org/t/p/original/${this.props.onImg}`} alt={this.props.onTitle} />
+           
           </Link>
+          <p className={styles.title}>{this.props.onTitle}</p>
         </li>
       );
   };
 };
 
-export default withRouter(MovieListItem) 
+export default withRouter(MovieListItem);

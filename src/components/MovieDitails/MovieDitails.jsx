@@ -1,5 +1,7 @@
-import styles from './MovieDitails.module.css'
-import defImg from "../../images/def.img.svg"
+import styles from './MovieDitails.module.css';
+import defImg from "../../images/def.img.svg";
+
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 const MovieDitails = ({ genres, name, title, overview, vote_average, poster_path, release_date, onHandleGoBack }) => {
     
   const img = poster_path
@@ -15,8 +17,10 @@ const MovieDitails = ({ genres, name, title, overview, vote_average, poster_path
     
   return (
     <div className={styles.wrap}>
-      <button className={styles.btn} type='button' onClick={onHandleGoBack} > &lArr; </button>
-      <img className={styles.img} src={img} alt={title} />
+      <div style={{position:"relative"}}>
+      <button className={styles.btn} type='button' onClick={onHandleGoBack} > <ArrowBackIcon fontSize="large"/> </button>
+        <img className={styles.img} src={img} alt={title} />
+        </div>
       <div>
         <h3 className={styles.text} >{title} ({releseData})</h3>
         <p>User Score: {result}%</p>
@@ -32,7 +36,7 @@ const MovieDitails = ({ genres, name, title, overview, vote_average, poster_path
 };
  
 MovieDitails.defaultProps = {
-  // title: '???',
+  
   overview: '???',
   vote_average: 0,
   release_date: 0,
