@@ -1,9 +1,11 @@
-import React, { Component,lazy, Suspense } from 'react';
-import { Route,  Switch} from 'react-router-dom';
-import {getMovieDitails} from '../../services/apiMovies'
-import MovieDitails from '../../components/MovieDitails'
-import routes from '../../routes'
-import NavigatonMovDit from '../../components/Navigation/NavigatonMovDit'
+import { Component,lazy, Suspense } from 'react';
+import { Route, Switch } from 'react-router-dom';
+
+import MovieDitails from '../../components/MovieDitails';
+import NavigatonMovDit from '../../components/Navigation/NavigatonMovDit';
+
+import { getMovieDitails } from '../../services/apiMovies';
+import routes from '../../routes';
 
 
 const Cast = lazy(() =>
@@ -34,21 +36,18 @@ class MovieDetailsPage extends Component  {
     componentWillUnmount() {
         this.setState({
             movie: []
-            
         });
     };
     
     handleGoBack = () => {
         const { location } = this.props
         const { history } = this.props
-       
         history.push(location?.state?.from || routes.home)
     };
 
     
     render() {
         const { movie } = this.state;
-        
         return (
             <>
                 <MovieDitails {...movie} onHandleGoBack={this.handleGoBack} />
@@ -64,6 +63,4 @@ class MovieDetailsPage extends Component  {
     };
 };
 
-
-
-export default MovieDetailsPage
+export default MovieDetailsPage;

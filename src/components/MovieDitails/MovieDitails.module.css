@@ -21,11 +21,12 @@
   margin-right: 10px;
 }
 .btn {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  color: white;
+  color: rgb(231, 10, 10);
   border: none;
   background-color: inherit;
   cursor: pointer;
+}
+.aboutMovieContainer {
+  width: 300px;
+  padding: 20px;
 }
