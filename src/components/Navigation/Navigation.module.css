@@ -22,9 +22,12 @@
 }
 
 .box {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
   height: 70px;
   border-bottom: 1.5px solid rgb(146, 143, 143);
-  padding-left: 30px;
   font-size: 20px;
   line-height: 1.4;
 }
