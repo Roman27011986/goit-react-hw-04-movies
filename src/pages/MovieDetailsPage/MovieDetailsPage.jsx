@@ -24,7 +24,6 @@ class MovieDetailsPage extends Component  {
         const { movieId } = this.props.match.params
         try{
             const { data } = await getMovieDitails(movieId)
-            console.log(data);
          this.setState({
             movie:data
          })
@@ -45,7 +44,6 @@ class MovieDetailsPage extends Component  {
         history.push(location?.state?.from || routes.home)
     };
 
-    
     render() {
         const { movie } = this.state;
         return (
