@@ -2,8 +2,8 @@ import styles from './MovieDitails.module.css';
 import defImg from "../../images/def.img.svg";
 
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-const MovieDitails = ({ genres,  title, overview, vote_average, poster_path, release_date, onHandleGoBack }) => {
-    
+const MovieDitails = ({ genres, title, overview, vote_average, poster_path, release_date, onHandleGoBack }) => {
+
   const img = poster_path
     ?
     `https://image.tmdb.org/t/p/original/${poster_path}`
@@ -14,13 +14,13 @@ const MovieDitails = ({ genres,  title, overview, vote_average, poster_path, rel
   const genre = genres ? genres.map(ganre => (
     ganre.name + ' '
   )) : 'no genres';
-    
+
   return (
     <div className={styles.wrap}>
       <div >
-      <button className={styles.btn} type='button' onClick={onHandleGoBack} > <ArrowBackIcon fontSize="large"/> </button>
+        <button className={styles.btn} type='button' onClick={onHandleGoBack} > <ArrowBackIcon fontSize="large" /> </button>
         <img className={styles.img} src={img} alt={title} />
-        </div>
+      </div>
       <div className={styles.aboutMovieContainer}>
         <h3 className={styles.text} >{title} ({releseData})</h3>
         <p>User Score: {result}%</p>
@@ -28,19 +28,15 @@ const MovieDitails = ({ genres,  title, overview, vote_average, poster_path, rel
         <p>{overview}</p>
         <h3 className={styles.text}>Genres</h3>
         <p className={styles.list}>  {genre}</p>
-
       </div>
-            
     </div>
   );
 };
- 
+
 MovieDitails.defaultProps = {
-  
   overview: 'No overview',
   vote_average: 0,
   release_date: 0,
-  
 };
 
 export default MovieDitails;

@@ -1,4 +1,4 @@
-import { Component,lazy, Suspense } from 'react';
+import { Component, lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import MovieDitails from '../../components/MovieDitails';
@@ -7,26 +7,24 @@ import NavigatonMovDit from '../../components/Navigation/NavigatonMovDit';
 import { getMovieDitails } from '../../services/apiMovies';
 import routes from '../../routes';
 
-
 const Cast = lazy(() =>
-  import('../../components/Cast/Cast.jsx' /* webpackChunkName: "Cast" */),
+    import('../../components/Cast/Cast.jsx' /* webpackChunkName: "Cast" */),
 );
 const Reviews = lazy(() =>
-  import('../../components/Reviews/Reviews.jsx' /* webpackChunkName: "Reviews" */),
+    import('../../components/Reviews/Reviews.jsx' /* webpackChunkName: "Reviews" */),
 );
 
-
-class MovieDetailsPage extends Component  {
+class MovieDetailsPage extends Component {
     state = {
         movie: []
     };
     async componentDidMount() {
         const { movieId } = this.props.match.params
-        try{
+        try {
             const { data } = await getMovieDitails(movieId)
-         this.setState({
-            movie:data
-         })
+            this.setState({
+                movie: data
+            })
         } catch (err) {
             alert(err);
         };
@@ -37,7 +35,7 @@ class MovieDetailsPage extends Component  {
             movie: []
         });
     };
-    
+
     handleGoBack = () => {
         const { location } = this.props
         const { history } = this.props
